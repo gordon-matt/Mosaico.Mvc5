@@ -1,0 +1,190 @@
+﻿@model MosaicoEmail
+
+@{
+    Layout = null;
+
+    string templatePath;
+
+    switch (Model.Template)
+    {
+        case MosaicoTemplate.TEDC15: templatePath = "/Content/templates/tedc15/template-tedc15.html"; break;
+        case MosaicoTemplate.Tutorial: templatePath = "/Content/templates/tutorial/template-tutorial.html"; break;
+        case MosaicoTemplate.Versafix1:
+        default: templatePath = "/Content/templates/versafix-1/template-versafix-1.html"; break;
+    }
+
+    string metadata = null;
+    string content = null;
+
+    if (Model.Id > 0)
+    {
+        metadata = Model.Metadata;
+        content = Model.Content;
+    }
+
+    var fieldTokens = (IDictionary<string, string>)ViewBag.FieldTokens;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="canonical" href="http://mosaico.io" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+    <meta name="viewport" content="width=1024, initial-scale=1">
+
+    <link rel="stylesheet" href="/Content/mosaico/mosaico-material.min.css" />
+    <link rel="stylesheet" href="/Content/mosaico/vendor/notoregular/stylesheet.css" />
+
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+
+    <script src="/Content/mosaico/vendor/jquery.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="/Content/mosaico/vendor/knockout.js"></script>
+    <script src="/Content/mosaico/vendor/jquery-ui.min.js"></script>
+    <script src="/Content/mosaico/vendor/jquery.ui.touch-punch.min.js"></script>
+    <script src="/Content/mosaico/vendor/load-image.all.min.js"></script>
+    <script src="/Content/mosaico/vendor/canvas-to-blob.min.js"></script>
+    <script src="/Content/mosaico/vendor/jquery.iframe-transport.js"></script>
+    <script src="/Content/mosaico/vendor/jquery.fileupload.js"></script>
+    <script src="/Content/mosaico/vendor/jquery.fileupload-process.js"></script>
+    <script src="/Content/mosaico/vendor/jquery.fileupload-image.js"></script>
+    <script src="/Content/mosaico/vendor/jquery.fileupload-validate.js"></script>
+    <script src="/Content/mosaico/vendor/knockout-jqueryui.min.js"></script>
+    <script src="/Content/mosaico/vendor/tinymce.min.js"></script>
+    <script src="/Content/mosaico/mosaico.min.js"></script>
+
+    <script>
+        $(function () {
+            if (!Mosaico.isCompatible()) {
+                alert('Update your browser!');
+                return;
+            }
+            // Full URL required for /dl (download and email test). Otherwise the links don't work.
+            var url = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '');
+
+            var basePath = url + '/mosaico';
+            var plugins;
+
+            plugins = [
+                function (viewModel) {
+                    var saveCmd = {
+                        name: 'Save',
+                        enabled: ko.observable(true)
+                    };
+
+                    saveCmd.execute = function () {
+                        saveCmd.enabled(false);
+                        viewModel.metadata.changed = Date.now();
+                        if (typeof viewModel.metadata.key == 'undefined') {
+                            var rnd = Math.random().toString(36).substr(2, 7);
+                            viewModel.metadata.key = rnd;
+                        }
+
+                        var postData = {
+                            //csrf_token: 'yourCsrfValueHere', // this is only required if your back-end requires csrf token
+                            id: @Model.Id,
+                            name: '@Model.Name', //TODO (Provide input box for user to give name to template) - better yet: provide name from previous screen, which should be a grid showing existing templates to edit or a button to create a new one
+                            template: @((byte)Model.Template),
+                            metadata: viewModel.exportMetadata(),
+                            content: viewModel.exportJSON(),
+                            html: viewModel.exportHTML()
+                        };
+
+                        $.post('/mosaico/save', postData)
+                            .done(function () {
+                                viewModel.notifier.success(viewModel.t('Successfully saved.'));
+                            })
+                            .fail(function (jqXHR, textStatus, error) {
+                                console.log(textStatus);
+                                console.log(error);
+                                console.log(jqXHR);
+                                viewModel.notifier.error(viewModel.t('Saving failed. Please try again in a few moments or contact us.'));
+                            })
+                            .always(function () {
+                                saveCmd.enabled(true);
+                            });
+                    };
+
+                    viewModel.save = saveCmd;
+                },
+            ];
+
+            @if (string.IsNullOrEmpty(metadata))
+            {
+                @:var metadata = undefined;
+            }
+            else
+            {
+                @:var metadata = ko.utils.parseJson('@Html.Raw(metadata.Replace(@"\", @"\\"))');
+            }
+
+            @if (string.IsNullOrEmpty(content))
+            {
+                @:var content = undefined;
+            }
+            else
+            {
+                @:var content = ko.utils.parseJson('@Html.Raw(content.Replace(@"\", @"\\"))');
+            }
+
+            Mosaico.start({
+                imgProcessorBackend: basePath + '/img/',
+                emailProcessorBackend: basePath + '/dl/',
+                titleToken: "MOSAICO Responsive Email Designer",
+                //onSave: function (saveObject) { alert('hi'); },
+                fileuploadConfig: {
+                    url: basePath + '/upload/'
+                }
+            }, '@templatePath', metadata, content, plugins);
+
+            setTimeout(function () {
+                var tokensButtonHtml = '<a title="Show Field Tokens" href="javascript:void(0)" onclick="showTokens();" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" role="button"><span class="ui-button-icon-primary ui-icon fa fa-fw fa-i-cursor"></span><span class="ui-button-text">Tokens</span></a>';
+                $(".rightButtons").append(tokensButtonHtml);
+            }, 3000);
+            
+        });
+
+        function showTokens() {
+            $("#tokens-modal").modal('show');
+        };
+
+        function insertToken(token) {
+            $("#tokens-modal").modal('hide');
+            tinymce.activeEditor.execCommand('mceInsertContent', false, '[[' + token + ']]');
+        };
+    </script>
+</head>
+<body class="mo-standalone">
+
+    <div class="modal fade" id="tokens-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Field Tokens</h4>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-group">
+                        @foreach (var keyValue in fieldTokens)
+                        {
+                            <li class="list-group-item">
+                                <a href="javascript:void(0);" onclick="insertToken('@keyValue.Key');">@keyValue.Value</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

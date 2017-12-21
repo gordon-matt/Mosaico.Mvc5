@@ -1,0 +1,580 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{764BCD91-10C2-4A18-AB39-E8A42C2BBE2A}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Mosaico.Mvc5</RootNamespace>
+    <AssemblyName>Mosaico.Mvc5</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.1.0\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.1.0\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.1.0\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.1.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MosaicoController.cs" />
+    <Compile Include="Controllers\TemplateController.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\UrlHelperExtensions.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\ImageHelper.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MosaicoEmail.cs" />
+    <Compile Include="Models\MosaicoTemplate.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\mosaico-index.css" />
+    <Content Include="Content\mosaico\fa\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\mosaico\img\byvoxmail.png" />
+    <Content Include="Content\mosaico\img\mosaico-badge.gif" />
+    <Content Include="Content\mosaico\img\mosaico-v.gif" />
+    <Content Include="Content\mosaico\img\mosaico32.png" />
+    <Content Include="Content\mosaico\img\mosaicologo.png" />
+    <Content Include="Content\mosaico\img\screenshot-orig.png" />
+    <Content Include="Content\mosaico\img\screenshot.png" />
+    <Content Include="Content\mosaico\mosaico-material.min.css" />
+    <Content Include="Content\mosaico\mosaico.min.css" />
+    <Content Include="Content\mosaico\mosaico.min.js" />
+    <Content Include="Content\mosaico\vendor\canvas-to-blob.min.js" />
+    <Content Include="Content\mosaico\vendor\jquery-ui.min.css" />
+    <Content Include="Content\mosaico\vendor\jquery-ui.min.js" />
+    <Content Include="Content\mosaico\vendor\jquery.fileupload-image.js" />
+    <Content Include="Content\mosaico\vendor\jquery.fileupload-process.js" />
+    <Content Include="Content\mosaico\vendor\jquery.fileupload-validate.js" />
+    <Content Include="Content\mosaico\vendor\jquery.fileupload.js" />
+    <Content Include="Content\mosaico\vendor\jquery.iframe-transport.js" />
+    <Content Include="Content\mosaico\vendor\jquery.min.js" />
+    <Content Include="Content\mosaico\vendor\jquery.ui.touch-punch.min.js" />
+    <Content Include="Content\mosaico\vendor\knockout-jqueryui.min.js" />
+    <Content Include="Content\mosaico\vendor\knockout.js" />
+    <Content Include="Content\mosaico\vendor\load-image.all.min.js" />
+    <Content Include="Content\mosaico\vendor\notoregular\stylesheet.css" />
+    <Content Include="Content\mosaico\vendor\plugins\advlist\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\advlist\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\anchor\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\anchor\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\autolink\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\autolink\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\autoresize\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\autoresize\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\autosave\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\autosave\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\bbcode\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\bbcode\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\charmap\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\charmap\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\codesample\css\prism.css" />
+    <Content Include="Content\mosaico\vendor\plugins\codesample\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\codesample\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\code\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\code\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\colorpicker\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\colorpicker\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\contextmenu\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\contextmenu\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\directionality\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\directionality\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\emoticons\img\smiley-cool.gif" />
+    <Content Include="Content\mosaico\vendor\plugins\emoticons\img\smiley-cry.gif" />
+    <Content Include="Content\mosaico\vendor\plugins\emoticons\img\smiley-embarassed.gif" />
+    <Content Include="Content\mosaico\vendor\plugins\emoticons\img\smiley-foot-in-mouth.gif" />
+    <Content Include="Content\mosaico\vendor\plugins\emoticons\img\smiley-frown.gif" />
+    <Content Include="Content\mosaico\vendor\plugins\emoticons\img\smiley-innocent.gif" />
+    <Content Include="Content\mosaico\vendor\plugins\emoticons\img\smiley-kiss.gif" />
+    <Content Include="Content\mosaico\vendor\plugins\emoticons\img\smiley-laughing.gif" />
+    <Content Include="Content\mosaico\vendor\plugins\emoticons\img\smiley-money-mouth.gif" />
+    <Content Include="Content\mosaico\vendor\plugins\emoticons\img\smiley-sealed.gif" />
+    <Content Include="Content\mosaico\vendor\plugins\emoticons\img\smiley-smile.gif" />
+    <Content Include="Content\mosaico\vendor\plugins\emoticons\img\smiley-surprised.gif" />
+    <Content Include="Content\mosaico\vendor\plugins\emoticons\img\smiley-tongue-out.gif" />
+    <Content Include="Content\mosaico\vendor\plugins\emoticons\img\smiley-undecided.gif" />
+    <Content Include="Content\mosaico\vendor\plugins\emoticons\img\smiley-wink.gif" />
+    <Content Include="Content\mosaico\vendor\plugins\emoticons\img\smiley-yell.gif" />
+    <Content Include="Content\mosaico\vendor\plugins\emoticons\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\emoticons\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\fullpage\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\fullpage\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\fullscreen\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\fullscreen\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\hr\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\hr\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\imagetools\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\imagetools\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\image\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\image\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\importcss\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\importcss\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\insertdatetime\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\insertdatetime\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\layer\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\layer\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\legacyoutput\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\legacyoutput\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\link\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\link\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\lists\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\lists\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\media\moxieplayer.swf" />
+    <Content Include="Content\mosaico\vendor\plugins\media\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\media\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\nonbreaking\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\nonbreaking\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\noneditable\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\noneditable\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\pagebreak\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\pagebreak\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\paste\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\paste\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\preview\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\preview\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\print\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\print\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\save\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\save\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\searchreplace\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\searchreplace\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\spellchecker\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\spellchecker\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\tabfocus\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\tabfocus\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\table\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\table\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\template\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\template\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\textcolor\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\textcolor\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\textpattern\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\textpattern\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\visualblocks\css\visualblocks.css" />
+    <Content Include="Content\mosaico\vendor\plugins\visualblocks\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\visualblocks\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\visualchars\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\visualchars\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\plugins\wordcount\plugin.js" />
+    <Content Include="Content\mosaico\vendor\plugins\wordcount\plugin.min.js" />
+    <Content Include="Content\mosaico\vendor\skins\gray-flat\content.inline.min.css" />
+    <Content Include="Content\mosaico\vendor\skins\gray-flat\content.min.css" />
+    <Content Include="Content\mosaico\vendor\skins\gray-flat\fonts\tinymce-small.svg" />
+    <Content Include="Content\mosaico\vendor\skins\gray-flat\fonts\tinymce.svg" />
+    <Content Include="Content\mosaico\vendor\skins\gray-flat\img\anchor.gif" />
+    <Content Include="Content\mosaico\vendor\skins\gray-flat\img\loader.gif" />
+    <Content Include="Content\mosaico\vendor\skins\gray-flat\img\object.gif" />
+    <Content Include="Content\mosaico\vendor\skins\gray-flat\img\trans.gif" />
+    <Content Include="Content\mosaico\vendor\skins\gray-flat\skin.ie7.min.css" />
+    <Content Include="Content\mosaico\vendor\skins\gray-flat\skin.min.css" />
+    <Content Include="Content\mosaico\vendor\skins\lightgray\content.inline.min.css" />
+    <Content Include="Content\mosaico\vendor\skins\lightgray\content.min.css" />
+    <Content Include="Content\mosaico\vendor\skins\lightgray\fonts\tinymce-small.svg" />
+    <Content Include="Content\mosaico\vendor\skins\lightgray\fonts\tinymce.svg" />
+    <Content Include="Content\mosaico\vendor\skins\lightgray\img\anchor.gif" />
+    <Content Include="Content\mosaico\vendor\skins\lightgray\img\loader.gif" />
+    <Content Include="Content\mosaico\vendor\skins\lightgray\img\object.gif" />
+    <Content Include="Content\mosaico\vendor\skins\lightgray\img\trans.gif" />
+    <Content Include="Content\mosaico\vendor\skins\lightgray\skin.ie7.min.css" />
+    <Content Include="Content\mosaico\vendor\skins\lightgray\skin.min.css" />
+    <Content Include="Content\mosaico\vendor\themes\inlite\theme.js" />
+    <Content Include="Content\mosaico\vendor\themes\inlite\theme.min.js" />
+    <Content Include="Content\mosaico\vendor\themes\modern\theme.js" />
+    <Content Include="Content\mosaico\vendor\themes\modern\theme.min.js" />
+    <Content Include="Content\mosaico\vendor\tinymce.min.js" />
+    <Content Include="Content\templates\tedc15\edres\footerBlock.png" />
+    <Content Include="Content\templates\tedc15\edres\headerBlock.png" />
+    <Content Include="Content\templates\tedc15\edres\heroBlock.png" />
+    <Content Include="Content\templates\tedc15\edres\socialBlock.png" />
+    <Content Include="Content\templates\tedc15\edres\threetwoBlock.png" />
+    <Content Include="Content\templates\tedc15\edres\twoColumnBlock.png" />
+    <Content Include="Content\templates\tedc15\edres\_full.png" />
+    <Content Include="Content\templates\tedc15\template-tedc15.html" />
+    <Content Include="Content\templates\tutorial\edres\fixedlist.png" />
+    <Content Include="Content\templates\tutorial\edres\HeaderAndText.png" />
+    <Content Include="Content\templates\tutorial\edres\_full.png" />
+    <Content Include="Content\templates\tutorial\screenshot_384.jpg" />
+    <Content Include="Content\templates\tutorial\screenshot_385.jpg" />
+    <Content Include="Content\templates\tutorial\screenshot_386.jpg" />
+    <Content Include="Content\templates\tutorial\screenshot_387.jpg" />
+    <Content Include="Content\templates\tutorial\screenshot_407.jpg" />
+    <Content Include="Content\templates\tutorial\screenshot_408.jpg" />
+    <Content Include="Content\templates\tutorial\template-tutorial.html" />
+    <Content Include="Content\templates\versafix-1\edres\buttonBlock.png" />
+    <Content Include="Content\templates\versafix-1\edres\doubleArticleBlock.png" />
+    <Content Include="Content\templates\versafix-1\edres\doubleImageBlock.png" />
+    <Content Include="Content\templates\versafix-1\edres\hrBlock.png" />
+    <Content Include="Content\templates\versafix-1\edres\imageBlock.png" />
+    <Content Include="Content\templates\versafix-1\edres\logoBlock.png" />
+    <Content Include="Content\templates\versafix-1\edres\sideArticleBlock.png" />
+    <Content Include="Content\templates\versafix-1\edres\singleArticleBlock.png" />
+    <Content Include="Content\templates\versafix-1\edres\socialBlock.png" />
+    <Content Include="Content\templates\versafix-1\edres\spacerBlock.png" />
+    <Content Include="Content\templates\versafix-1\edres\textBlock.png" />
+    <Content Include="Content\templates\versafix-1\edres\titleBlock.png" />
+    <Content Include="Content\templates\versafix-1\edres\tripleArticleBlock.png" />
+    <Content Include="Content\templates\versafix-1\edres\tripleImageBlock.png" />
+    <Content Include="Content\templates\versafix-1\edres\_full.png" />
+    <Content Include="Content\templates\versafix-1\img\social_def\facebook_bw_ok.png" />
+    <Content Include="Content\templates\versafix-1\img\social_def\facebook_ok.png" />
+    <Content Include="Content\templates\versafix-1\img\social_def\flickr_bw_ok.png" />
+    <Content Include="Content\templates\versafix-1\img\social_def\flickr_ok.png" />
+    <Content Include="Content\templates\versafix-1\img\social_def\google_plus_bw_ok.png" />
+    <Content Include="Content\templates\versafix-1\img\social_def\google_plus_ok.png" />
+    <Content Include="Content\templates\versafix-1\img\social_def\instagram_bw_ok.png" />
+    <Content Include="Content\templates\versafix-1\img\social_def\instagram_ok.png" />
+    <Content Include="Content\templates\versafix-1\img\social_def\linkedin_bw_ok.png" />
+    <Content Include="Content\templates\versafix-1\img\social_def\linkedin_ok.png" />
+    <Content Include="Content\templates\versafix-1\img\social_def\twitter_bw_ok.png" />
+    <Content Include="Content\templates\versafix-1\img\social_def\twitter_ok.png" />
+    <Content Include="Content\templates\versafix-1\img\social_def\vimeo_bw_ok.png" />
+    <Content Include="Content\templates\versafix-1\img\social_def\vimeo_ok.png" />
+    <Content Include="Content\templates\versafix-1\img\social_def\web_bw_ok.png" />
+    <Content Include="Content\templates\versafix-1\img\social_def\web_ok.png" />
+    <Content Include="Content\templates\versafix-1\img\social_def\youtube_bw_ok.png" />
+    <Content Include="Content\templates\versafix-1\img\social_def\youtube_ok.png" />
+    <Content Include="Content\templates\versafix-1\img\sponsor.gif" />
+    <Content Include="Content\templates\versafix-1\template-versafix-1.html" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\mosaico\fa\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\mosaico\fa\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\mosaico\fa\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\mosaico\fa\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\mosaico\lang\mosaico-de.json" />
+    <Content Include="Content\mosaico\lang\mosaico-en.json" />
+    <Content Include="Content\mosaico\lang\mosaico-es.json" />
+    <Content Include="Content\mosaico\lang\mosaico-fr.json" />
+    <Content Include="Content\mosaico\lang\mosaico-it.json" />
+    <Content Include="Content\mosaico\lang\mosaico-nl.json" />
+    <Content Include="Content\mosaico\lang\mosaico-sv.json" />
+    <Content Include="Content\mosaico\lang\README.md" />
+    <Content Include="Content\mosaico\mosaico-material.min.css.map" />
+    <Content Include="Content\mosaico\mosaico.min.css.map" />
+    <Content Include="Content\mosaico\mosaico.min.js.map" />
+    <Content Include="Content\mosaico\vendor\jquery.min.map" />
+    <Content Include="Content\mosaico\vendor\notoregular\NotoSans-Regular-webfont.eot" />
+    <Content Include="Content\mosaico\vendor\notoregular\NotoSans-Regular-webfont.ttf" />
+    <Content Include="Content\mosaico\vendor\notoregular\NotoSans-Regular-webfont.woff" />
+    <Content Include="Content\mosaico\vendor\skins\gray-flat\fonts\readme.md" />
+    <Content Include="Content\mosaico\vendor\skins\gray-flat\fonts\tinymce-small.eot" />
+    <Content Include="Content\mosaico\vendor\skins\gray-flat\fonts\tinymce-small.json" />
+    <Content Include="Content\mosaico\vendor\skins\gray-flat\fonts\tinymce-small.ttf" />
+    <Content Include="Content\mosaico\vendor\skins\gray-flat\fonts\tinymce-small.woff" />
+    <Content Include="Content\mosaico\vendor\skins\gray-flat\fonts\tinymce.eot" />
+    <Content Include="Content\mosaico\vendor\skins\gray-flat\fonts\tinymce.json" />
+    <Content Include="Content\mosaico\vendor\skins\gray-flat\fonts\tinymce.ttf" />
+    <Content Include="Content\mosaico\vendor\skins\gray-flat\fonts\tinymce.woff" />
+    <Content Include="Content\mosaico\vendor\skins\gray-flat\skin.json" />
+    <Content Include="Content\mosaico\vendor\skins\gray-flat\Variables.less" />
+    <Content Include="Content\mosaico\vendor\skins\lightgray\fonts\tinymce-small.eot" />
+    <Content Include="Content\mosaico\vendor\skins\lightgray\fonts\tinymce-small.ttf" />
+    <Content Include="Content\mosaico\vendor\skins\lightgray\fonts\tinymce-small.woff" />
+    <Content Include="Content\mosaico\vendor\skins\lightgray\fonts\tinymce.eot" />
+    <Content Include="Content\mosaico\vendor\skins\lightgray\fonts\tinymce.ttf" />
+    <Content Include="Content\mosaico\vendor\skins\lightgray\fonts\tinymce.woff" />
+    <Content Include="Content\templates\tedc15\README.md" />
+    <Content Include="Content\templates\tutorial\mosaico-tutorial.md" />
+    <Content Include="Content\templates\tutorial\mosaico-tutorial.pdf" />
+    <None Include="Scripts\jquery-2.2.0.intellisense.js" />
+    <Content Include="Scripts\jquery-2.2.0.js" />
+    <Content Include="Scripts\jquery-2.2.0.min.js" />
+    <Content Include="Scripts\jquery-2.2.0.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Mosaico\Editor.cshtml" />
+    <Content Include="Views\Mosaico\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Media\Thumbs\" />
+    <Folder Include="Media\Uploads\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>21568</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:21568/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

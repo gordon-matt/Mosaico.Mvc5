@@ -1,0 +1,71 @@
+﻿@model IEnumerable<MosaicoEmail>
+
+<div class="container">
+    <h1>Manage E-mails</h1>
+
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create-modal">
+        <i class="fa fa-file-o"></i>
+        New
+    </button>
+
+    @* TODO: In real situation, use DataTables, KendoGrid or some other such thing, with paging, sorting, etc. *@
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@Html.ActionLink("Edit", "Editor", "Mosaico", new { name = item.Name, template = item.Template, id = item.Id }, new { @class = "btn btn-default", target = "_blank" })</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div id="create-modal" class="modal fade" role="dialog" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">New Template</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="Name" class="control-label">Name: </label>
+                        <input type="text" id="Name" name="Name" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Template" class="control-label">Based on: </label>
+                        <select class="form-control" id="Template" name="Template">
+                            <option value="0">versafix-1</option>
+                            <option value="1">tedc15</option>
+                            <option value="2">tutorial</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary" onclick="openEditor();">Create</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function openEditor() {
+        var name = $('#Name').val();
+        var template = $('#Template').val();
+
+        //document.location.href = "/mosaico/editor/" + name + "/" + template;
+        window.open("/mosaico/editor/" + name + "/" + template);
+    }
+</script>
